@@ -27,7 +27,10 @@ component {
     qry_getDataByID = qry_getDataByID.execute(sql=sql).getResult();
 
     if (qry_getDataByID.recordcount) {
-      variables.fw.populate(cfc = result, properties = qry_getDataByID);
+      for(var data in qry_getDataByID) {
+        variables.fw.populate(cfc = result, properties = data);
+      }
+
     }
 
     return result;

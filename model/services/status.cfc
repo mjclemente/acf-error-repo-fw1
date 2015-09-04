@@ -26,7 +26,9 @@ component {
       qry_getStatusByID = qry_getStatusByID.execute(sql=sql).getResult();
 
       if (qry_getStatusByID.recordcount) {
-        variables.fw.populate(cfc = result, properties = qry_getStatusByID);
+        for(var status in qry_getStatusByID) {
+          variables.fw.populate(cfc = result, properties = status);
+        }
       }
 
       return result;
